@@ -7,8 +7,9 @@ namespace BlazorQRCode.Data
 {
     public static class Settings
     {
-        public const string BaseURL = "https://localhost:44362";
-        public static string baseURL = $"{BaseURL}/api/DAthletes";
+        public const string BaseURL = "https://athsessgate.azurewebsites.net";
+        //public const string BaseURL = "https://localhost:44362";
+        public static string baseURL = $"{BaseURL}/api/D2Athletes";
         public const int ManagementPin = 137;
         public const int QrcodePin = 549;
         public const int FetchDataPin = 787;

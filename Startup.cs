@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using BlazorQRCode.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http;
+using AspNetMonsters.Blazor.Geolocation;
 
 namespace BlazorQRCode
 {
@@ -32,13 +33,13 @@ namespace BlazorQRCode
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<AthleteService>();
             services.AddSingleton<HomeController>();
             services.AddSingleton<MyService>();
             services.AddHttpContextAccessor();
             services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddTransient(sp => new HttpClient { BaseAddress = new Uri($"http://localhost:44362") });
+            services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(Settings.BaseURL) });
             services.AddTelerikBlazor();
+            services.AddScoped<LocationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
