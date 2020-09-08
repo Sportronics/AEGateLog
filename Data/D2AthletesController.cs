@@ -36,6 +36,7 @@ namespace BlazorQRCode.Data
         [HttpPost]
         public async Task<IActionResult> Post(D2Athlete d2athlete)
         {
+            //return Ok(133);
             _context.Add(d2athlete);
             await _context.SaveChangesAsync();
             return Ok(d2athlete.Id);

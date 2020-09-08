@@ -141,14 +141,21 @@
                 athlete2.Accuracy = accuracy;
             }
 
+            //await JsRuntime.InvokeAsync<string>("alert", $"1-{Settings.baseURL}");
+
+
             var content = new StringContent(
-                JsonConvert.SerializeObject(athlete2),
-                Encoding.UTF8,
-                "application/json");
+            JsonConvert.SerializeObject(athlete2),
+            Encoding.UTF8,
+            "application/json");
 
             var response = await client.PostAsync($"{Settings.baseURL}", content);
 
+            //await JsRuntime.InvokeAsync<string>("alert", $"2-{response.StatusCode}");
+
             var aths = await client.GetFromJsonAsync<D2Athlete[]>($"{Settings.baseURL}");
+
+            //await JsRuntime.InvokeAsync<string>("alert", $"3-{aths.Length}");
 
 
             showGif = false;
